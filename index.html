@@ -8,12 +8,19 @@
 	<title>Weather API</title>
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 	<script type="text/javascript" src="script/script.js"></script>
+	<script type="text/javascript" src="script/skycons.js"></script>
 </head>
 <body>
+
+	<!-- ADD HERE PROPER BANNER -->
+	<div class="banner">
+		<h1>Current weather at your location</h1>
+		<p>works properly only if your machine has location track enabled</p>
+	</div>
 <!-- for location -->
 	<div class="location">
-		<h1 class="location-timezone">Timezone</h1>
-		<p>icon</p>
+		<h2 class="location-timezone">Timezone</h2>
+		<canvas class="icon" width="128" height="128"></canvas>
 	</div>
 <!-- for the weather description -->
 	<div class="temperature">

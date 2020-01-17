@@ -25,15 +25,34 @@ function init() {
 				.then(data => {
 					console.log(data); /* allows us to see in the console what's available */
 					/* destructuring allow us to use selected elements */
-					const {temperature, summary} = data.currently;
+					const {temperature, summary, icon} = data.currently;
 					/* DOM elements build with API */
 					temperatureDegree.textContent = temperature;
 					temperatureDescription.textContent = summary;
 					locationTimezone.textContent = data.timezone;
+
+					setIcons(icon, document.querySelector(".icon"));
+
 				})
 		});
 	}
+
+	function setIcons(icon, iconID) {
+		const skycons = new Skycons({color: "#08086b"});
+		const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+
+		skycons.play();
+
+		return skycons.set(iconID, Skycons[currentIcon]);
+	}
+
+
 }
+
+
+
+
+
 
 
 
