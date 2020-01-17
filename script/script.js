@@ -32,13 +32,16 @@ function init() {
 					locationTimezone.textContent = data.timezone;
 
 					setIcons(icon, document.querySelector(".icon"));
+					/* the second argument is icon ID */
 
 				})
 		});
 	}
 
 	function setIcons(icon, iconID) {
+		/* new instance of the Skycons: */
 		const skycons = new Skycons({color: "#08086b"});
+		/* to adjust notation to the 'skycons' requirements, we replace '-' with '_' and make the name uppercased: */
 		const currentIcon = icon.replace(/-/g, "_").toUpperCase();
 
 		skycons.play();
