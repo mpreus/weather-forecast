@@ -9,6 +9,8 @@ function init() {
 	let temperatureDescription = document.querySelector(".temperature-description");
 	let temperatureDegree = document.querySelector(".temperature-degree");
 	let locationTimezone = document.querySelector(".location-timezone");
+	let temperatureSection = document.querySelector(".temperature");
+	const temperatureSpan = document.querySelector(".degree-section span");
 
 
 	if (navigator.geolocation) {
@@ -27,13 +29,27 @@ function init() {
 					/* destructuring allow us to use selected elements */
 					const {temperature, summary, icon} = data.currently;
 					/* DOM elements build with API */
-					temperatureDegree.textContent = temperature;
+					temperatureDegree.textContent = temperature.toFixed(1);
 					temperatureDescription.textContent = summary;
 					locationTimezone.textContent = data.timezone;
+				/* Celcius to Farenheit and to Celcius: */
+					let celcius = (temperature - 32) * (5 / 9);
 
+				/* setting icon for current weather: */
 					setIcons(icon, document.querySelector(".icon"));
 					/* the second argument is icon ID */
 
+				/* setting alternative temperatures F to C and back: */
+					temperatureSection.addEventListener("click", () => {
+						if (temperatureSpan.textContent === "F") {
+							temperatureSpan.textContent = "ºC";
+							temperatureDegree.textContent = celcius.toFixed(1);
+						}
+						else {
+							temperatureSpan.textContent = "F";
+							temperatureDegree.textContent = temperature.toFixed(1);
+						}
+					})
 				})
 		});
 	}
