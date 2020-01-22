@@ -12,7 +12,6 @@ function init() {
 	let temperatureSection = document.querySelector(".temperature");
 	const temperatureSpan = document.querySelector(".degree-section span");
 
-
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(position => {
 			long = position.coords.longitude;
@@ -64,18 +63,4 @@ function init() {
 
 		return skycons.set(iconID, Skycons[currentIcon]);
 	}
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
